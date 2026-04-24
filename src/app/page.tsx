@@ -85,7 +85,7 @@ export default function InventarioPage() {
       <div className="flex justify-between items-start mb-7 flex-wrap gap-4">
         <div>
           <h2 className="page-title">Nuevo Inventario</h2>
-          <p className="page-subtitle">Cargá las cantidades del mes</p>
+          <p className="page-subtitle">Cargá los contenedores del mes</p>
         </div>
         <div className="flex items-end gap-3 flex-wrap">
           <div className="field">
@@ -144,9 +144,9 @@ export default function InventarioPage() {
               <th>Producto</th>
               <th>Categoría</th>
               <th>Unidad</th>
-              <th className="text-right">Cant./unidad</th>
-              <th className="text-right">kr/unidad</th>
-              <th>Cantidad</th>
+              <th className="text-right">Unidades por contenedor</th>
+              <th className="text-right">Costo unitario</th>
+              <th>Contenedores</th>
               <th className="text-right">Subtotal</th>
             </tr>
           </thead>
