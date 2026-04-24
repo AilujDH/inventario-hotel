@@ -26,15 +26,41 @@ export async function POST(req: NextRequest) {
   const body = await req.json()
   const { nombre, categoria, unidad, cantUnidad, costo } = body
 
-  if (!nombre) return NextResponse.json({ error: 'El nombre es obligatorio' }, { status: 400 })
+  if (!nombre) {
+    return NextResponse.json({ error: 'El nombre es obligatorio' }, { status: 400 })
+  }
 
+  // asegurar que la categoría exista
+  if (categoria) {
+    const { data: existingCat } = await supabaseServer
+      .from('categorias')
+      .select('id')
+      .eq('nombre', categoria)
+      .maybeSingle()
+
+    if (!existingCat) {
+      await supabaseServer
+        .from('categorias')
+        .insert({ nombre: categoria })
+    }
+  }
+
+  // insertar producto
   const { data, error } = await supabaseServer
     .from('productos')
-    .insert({ nombre, categoria, unidad, cant_por_unidad: cantUnidad, costo_por_unidad: costo })
+    .insert({
+      nombre,
+      categoria,
+      unidad,
+      cant_por_unidad: cantUnidad,
+      costo_por_unidad: costo
+    })
     .select()
     .single()
 
-  if (error) return NextResponse.json({ error: error.message }, { status: 500 })
+  if (error) {
+    return NextResponse.json({ error: error.message }, { status: 500 })
+  }
 
   return NextResponse.json({
     id: data.id,
