@@ -1,8 +1,16 @@
 # Inventario · Berns — Next.js
+Stack: Next.js 14 · TypeScript · Tailwind · Supabase · Vercel
 
-Sistema de gestión de inventario para la cocina del Hotel Berns.  
-Stack: **Next.js 14 · TypeScript · Tailwind · Supabase · Vercel**
+Sistema full-stack de gestión de inventario desarrollado para un cliente real (Hotel Berns, Suecia). Permite al equipo de cocina llevar control mensual de stock, ver un dashboard con KPIs, comparar períodos históricos, y cargar/exportar productos vía Excel.
+Funcionalidades principales:
 
+Conteo de inventario mensual por producto y categoría
+Dashboard con KPIs: valor total de stock, desglose por categoría
+Comparación histórica entre períodos
+Import/export de catálogo de productos vía Excel
+Backend propio con API routes (Next.js) conectado a Supabase (PostgreSQL)
+
+⚠️ Nota: la instancia de Supabase que alimentaba el demo en vivo fue eliminada, por lo que el deploy en Vercel actualmente no muestra datos. El código y la arquitectura siguen siendo representativos del proyecto completo.
 ---
 
 ## 🚀 Correr localmente
